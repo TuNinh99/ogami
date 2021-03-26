@@ -1,0 +1,2 @@
+(self["webpackChunkogami"]=self["webpackChunkogami"]||[]).push([[642],{8651:function(e,s,r){"use strict";r.r(s),r.d(s,{default:function(){return u}});var i=r(6252),n={class:"services"},a=(0,i.Wm)("div",{class:"container"}," this is services ",-1);function c(e,s,r,c,t,u){return(0,i.wg)(),(0,i.j4)("div",n,[a])}var t={name:"serveices"};t.render=c;var u=t}}]);
+//# sourceMappingURL=Services.4b8aa1eb.js.map
