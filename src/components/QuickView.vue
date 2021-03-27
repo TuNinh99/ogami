@@ -104,7 +104,11 @@
             <button class="content__btn-card" @click.prevent="handleAddCart">
               add to card
             </button>
-            <button class="content__btn-buy">buy now</button>
+            <router-link :to="{ name: 'cart' }">
+              <button class="content__btn-buy" @click.prevent="handleAddCart">
+                buy now
+              </button>
+            </router-link>
           </div>
           <div class="content__share">
             <span class="content__share-title">Share link: </span>
@@ -168,7 +172,6 @@ export default {
       }
     },
     handleAddCart() {
-      console.log(this.$store.state.product);
       if (localStorage.getItem("cart") === "") {
         const listProducts = [];
         this.addCart(listProducts);

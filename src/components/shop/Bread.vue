@@ -2,13 +2,13 @@
   <div class="bread">
     <div class="wraper row" v-if="filterBread().length !== 0">
       <div
-        class="col-12 col-sm-6 col-md-4"
+        class="col-6 col-md-4 item"
         v-for="food in sortProducts()"
         :key="food.id"
         :id="food.id"
         @click.prevent="sendFood(food)"
       >
-        <router-link :to="{ name: 'products', params: {name: food.name} }">
+        <router-link :to="{ name: 'products', params: { name: food.name } }">
           <div class="wraper-item">
             <div class="item__image">
               <img :src="food.images.item1" alt="" />
@@ -132,6 +132,13 @@ export default {
       "https://ogami-shop-default-rtdb.firebaseio.com/food.json"
     ).then((response) => response.json());
     this.products = data;
+  },
+  mounted() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

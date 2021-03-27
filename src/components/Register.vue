@@ -2,8 +2,11 @@
   <div class="login">
     <div class="container">
       <div class="container">
+        <div class="login__breadcrumbs">
+          <breadcumbs />
+        </div>
         <div class="login__auth">
-          <h2>login</h2>
+          <h2>Register</h2>
           <div class="login__auth-form">
             <form action="" id="login">
               <div class="form__group">
@@ -95,7 +98,9 @@
 </template>
 
 <script>
+import Breadcumbs from "@/components/Breadcumbs.vue";
 export default {
+  components: { Breadcumbs },
   name: "register",
   data() {
     return {
@@ -165,6 +170,16 @@ export default {
       const element = document.querySelector(selector);
       return element;
     },
+  },
+  created() {
+    this.$store.state.breadcrumbs[0] = "/ register";
+  },
+  mounted() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

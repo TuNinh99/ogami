@@ -399,6 +399,14 @@ a {
     }
 
     .header__menu {
+        @include tablet {
+            margin-bottom: 3em;
+        }
+
+        @include mobile {
+            margin-bottom: 1em;
+        }
+
         &.fixed {
             width: 100%;
             background-color: $background-color;
@@ -429,16 +437,19 @@ a {
                     margin: 0 30px;
                     transition: $animate;
 
+                    a {
+                        color: $dark-light-color;
+                        font-size: $min-size;
+                    }
+
                     &:hover {
-                        a.navbar__item-heading {
+                        a {
                             color: $green-color;
                         }
                     }
 
-                    a.navbar__item-heading {
-                        color: $dark-light-color;
-                        font-size: $min-size;
-                        &.active{
+                    &.active {
+                        a {
                             color: $green-color;
                         }
                     }
@@ -499,9 +510,15 @@ a {
             }
 
             .header__nav-icon {
+                display: none;
+
                 i {
                     font-size: $bg-size;
                     color: $light-gray-color;
+                }
+
+                @include mobile {
+                    display: block;
                 }
             }
 
@@ -556,6 +573,7 @@ a {
                         font-size: $xl-size;
                         font-weight: 500;
                         color: $dark-color;
+
                         &.active {
                             color: $white-color;
                         }
@@ -954,10 +972,6 @@ a {
             text-align: center;
             cursor: pointer;
 
-            @include mobile {
-                margin: 1em 2em;
-            }
-
             .categories__item-img {
                 width: 40%;
                 margin: 10% auto 1.875em;
@@ -1095,7 +1109,9 @@ a {
                 cursor: pointer;
 
                 @include mobile {
-                    margin: 1em 2em;
+                    height: 15em;
+                    padding: 0.75em 0.5em;
+                    margin-bottom: 1em;
                 }
 
                 &:before {
@@ -1123,7 +1139,6 @@ a {
                     }
 
                     .item__select {
-                        // display: block;
                         opacity: 1;
                         visibility: visible;
 
@@ -1139,6 +1154,14 @@ a {
                     }
 
                     .item__price {
+                        @include mobile {
+                            font-size: $regular-size;
+
+                            del {
+                                font-size: .75em;
+                            }
+                        }
+
                         del {
                             display: none;
                         }
@@ -1149,6 +1172,11 @@ a {
                     height: 138px;
                     width: 100%;
                     margin-bottom: 30px;
+
+                    @include mobile {
+                        height: 5.25em;
+                        margin-bottom: 1em;
+                    }
 
                     img {
                         height: 100%;
@@ -1767,9 +1795,6 @@ a {
 
         &.row {
             margin: 0;
-            // .item{
-            //     padding: 0 .25em;
-            // }
         }
     }
 
@@ -1785,10 +1810,17 @@ a {
         border: 1px solid $border-color;
         position: relative;
 
+        @include mobile {
+            flex-direction: column;
+        }
+
         .product__container-images {
             cursor: pointer;
-            // width: 25em;
             width: 50%;
+
+            @include mobile {
+                width: 100%;
+            }
 
             .images__main {
                 height: 25em;
@@ -1800,6 +1832,10 @@ a {
 
                 @include tablet {
                     height: 18em;
+                }
+
+                @include mobile {
+                    height: 21em;
                 }
             }
 
@@ -1834,15 +1870,16 @@ a {
                     }
                 }
             }
-
-            // @include tablet{
-            //     width: 100%;
-            // }
         }
 
         .product__container-content {
             width: 45%;
             margin-left: 20px;
+
+            @include mobile {
+                width: 100%;
+                margin: 2.5em 0 0;
+            }
 
             h6 {
                 text-transform: uppercase;
@@ -2041,6 +2078,14 @@ a {
                     &:hover {
                         color: $green-color;
                     }
+
+                    @include mobile {
+                        padding: .75em;
+                    }
+                }
+
+                @include mobile {
+                    margin-top: 1.5em;
                 }
             }
         }
@@ -2088,6 +2133,12 @@ a {
     margin-bottom: 3.75em;
 
     .shop__container {
+        @include mobile {
+            &.container {
+                padding: 0 .3125em;
+            }
+        }
+
         .shop__container-main {
             display: flex;
             align-items: flex-start;
@@ -2099,6 +2150,7 @@ a {
 
             .main__sidebar {
                 width: 25%;
+
                 @include mobile {
                     width: 100%;
                 }
@@ -2132,14 +2184,23 @@ a {
                             color: $dark-color;
                             width: 15em;
                             border: 1px solid $light-gray-color;
-                            padding: 8px 15px;
+                            padding: .5em .9375em;
                             transition: $animate;
 
                             &:hover {
                                 border: 1px solid $green-color;
                             }
-                            @include mobile{
-                                width: 120%;
+
+                            @include mobile {
+                                width: 100%;
+                                padding: .3125em .5em;
+
+                                .filter__text {
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    width: 4em;
+                                }
                             }
                         }
 
@@ -2161,8 +2222,13 @@ a {
                             overflow: hidden;
                             transition: max-height .5s ease-in-out;
 
+                            @include mobile {
+                                width: 12em;
+                            }
+
                             &.visible {
                                 @include show-dropdown;
+
                             }
 
                             .dropdown__item {
@@ -2235,7 +2301,8 @@ a {
                 height: 3px;
                 background-color: $green-color;
             }
-            @include mobile{
+
+            @include mobile {
                 font-size: 1.125em;
             }
         }
@@ -2264,6 +2331,12 @@ a {
 }
 
 .wraper {
+    @include mobile {
+        .item {
+            padding: 0 .25em;
+        }
+    }
+
     .wraper-item {
         text-align: center;
         height: 320px;
@@ -2278,10 +2351,9 @@ a {
             height: 15em;
             padding: .5em 1em 1em;
         }
+
         @include mobile {
-            padding: 2em 0;
-            margin: 1em 2em;
-            height: 18em;
+            padding: .75em .5em;
         }
 
         &:before {
@@ -2346,6 +2418,10 @@ a {
                 margin-bottom: 1em;
             }
 
+            @include mobile {
+                height: 5.25em;
+            }
+
             img {
                 height: 100%;
                 width: 100%;
@@ -2372,9 +2448,7 @@ a {
                 @include tablet {
                     font-size: $regular-size;
                 }
-                @include mobile {
-                    font-size: $md-size;
-                }
+
             }
         }
 
@@ -2388,9 +2462,6 @@ a {
                     font-size: $regular-size;
                     margin-left: .3125em;
                 }
-                @include mobile{
-                    font-size: $xl-size;
-                }
             }
 
             del {
@@ -2398,9 +2469,6 @@ a {
 
                 @include tablet {
                     font-size: .75em;
-                }
-                @include mobile{
-                    font-size: $min-size;
                 }
             }
         }
@@ -2506,7 +2574,8 @@ a {
         font-size: $xl-size;
         font-weight: 400;
         line-height: 1.25em;
-        @include mobile{
+
+        @include mobile {
             font-size: $regular-size;
         }
     }
@@ -2544,6 +2613,10 @@ a {
 
     .detail__content {
         padding: 1.75em;
+
+        @include mobile {
+            padding: 1.75em .75em;
+        }
 
         .detail__content-item {
             font-size: $min-size;
@@ -2595,9 +2668,11 @@ a {
         .cart__container-table {
             width: 100%;
             margin-bottom: 1.875em;
-            @include mobile{
+
+            @include mobile {
                 overflow-x: auto;
             }
+
             table {
                 width: 100%;
                 border: 1px solid $border-color;
@@ -2697,14 +2772,17 @@ a {
         .cart__container-footer {
             @include flex-box;
             margin-bottom: 3.75em;
-            @include mobile{
+
+            @include mobile {
                 align-items: flex-end;
             }
+
             .footer__coupon {
-                @include mobile{
+                @include mobile {
                     display: flex;
                     flex-direction: column;
                 }
+
                 input[type="text"] {
                     height: 2.8125em;
                     border: 1px solid $border-color;
@@ -2713,7 +2791,8 @@ a {
                     font-weight: 500;
                     color: $border-color;
                     padding-left: 1em;
-                    @include mobile{
+
+                    @include mobile {
                         margin-bottom: 2em;
                     }
                 }
@@ -3017,11 +3096,20 @@ a {
         pointer-events: auto;
         margin: 20vh auto 0;
 
+        @include mobile {
+            width: 18.75em;
+        }
+
         p {
             padding: 24px;
-            font-size: 16px;
+            font-size: $regular-size;
             line-height: 1.5715;
             word-wrap: break-word;
+
+            @include mobile {
+                padding: 1em;
+                font-size: .875em;
+            }
         }
 
         .notify__close {
@@ -3428,12 +3516,15 @@ a {
                         font-size: .8em;
                     }
                 }
-                @include mobile{
+
+                @include mobile {
                     margin-bottom: 2em;
-                    p{
+
+                    p {
                         font-size: $xl-size;
                     }
-                    .methods__item-bottom{
+
+                    .methods__item-bottom {
                         font-size: $regular-size;
                     }
                 }
@@ -3540,9 +3631,10 @@ a {
                     background-color: $white-color;
                     color: $green-color;
                 }
-                @include mobile{
+
+                @include mobile {
                     width: 100%;
-                    font-size:.9375em;
+                    font-size: .9375em;
                     font-weight: 600;
                 }
             }
@@ -3560,6 +3652,11 @@ a {
             @include tablet {
                 .row {
                     align-items: center;
+                }
+            }
+            @include mobile{
+                .row {
+                    flex-direction: column-reverse;
                 }
             }
 
@@ -3588,7 +3685,9 @@ a {
 
             .story__video {
                 position: relative;
-
+                @include mobile{
+                    margin-bottom: 2em;
+                }
                 img {
                     height: 18.75em;
                     width: 100%;
@@ -3625,18 +3724,22 @@ a {
             padding: 3.125em 0;
             border: 1px solid $border-color;
             margin-bottom: 3.75rem;
-            @include mobile{
+
+            @include mobile {
                 border: none;
             }
+
             .statistical__wraper {
                 .statistical__wraper-item {
                     text-align: center;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    @include mobile{
+
+                    @include mobile {
                         padding: 2em 0;
                     }
+
                     .item__icon {
                         img {
                             margin-right: 1.875em;
@@ -3683,9 +3786,10 @@ a {
                 }
 
                 .introduction__five-img {
-                    @include mobile{
+                    @include mobile {
                         margin-bottom: 2em;
                     }
+
                     img {
                         height: 100%;
                         width: 100%;
@@ -3883,9 +3987,11 @@ a {
             margin: 0 auto;
             width: 50%;
             max-width: 100%;
-            @include mobile{
+
+            @include mobile {
                 width: 100%;
             }
+
             form {
                 color: $dark-color;
                 font-size: 16px;
@@ -3975,7 +4081,8 @@ a {
                             &:before {
                                 content: "";
                             }
-                            @include mobile{
+
+                            @include mobile {
                                 font-size: .9375em;
                             }
                         }
@@ -3988,7 +4095,8 @@ a {
                             font-size: 1.125em;
                             font-weight: 400;
                             color: $green-color;
-                            @include mobile{
+
+                            @include mobile {
                                 font-size: .9375em;
                                 font-weight: 500;
                             }
@@ -4053,6 +4161,33 @@ a {
     }
 }
 
+.mobileShop {
+    position: fixed;
+    bottom: 2em;
+    left: 2em;
+    width: 3.5em;
+    height: 3.5em;
+    text-align: center;
+    line-height: 3.5em;
+    border-radius: 100%;
+    background-color: #60ae13;
+    opacity: 0;
+    visibility: hidden;
+    transition: $animate;
+
+    i {
+        color: $white-color;
+        font-size: $sm-size;
+    }
+
+    @include mobile {
+        &.show {
+            opacity: .95;
+            visibility: visible;
+        }
+    }
+}
+
 @include tablet {
     .products__top {
         h2 {
@@ -4063,10 +4198,12 @@ a {
     .cart__container-step {
         .item {
             padding: 0;
-            @include mobile{
+
+            @include mobile {
                 padding: 0 1em;
                 margin: .75em 0;
             }
+
             .step__block {
                 .step__block-content {
                     h2 {
@@ -4099,7 +4236,7 @@ a {
         background-color: $white-color;
         box-shadow: -3px 0 10px -2px rgb(0 0 0 / 10%);
         z-index: 999999;
-        border-radius: 0 .5em .5em 0;
+        border-radius: .5em 0 0 .5em;
         padding-bottom: 1em;
         background-color: $light-color;
 
@@ -4121,7 +4258,7 @@ a {
 
             .item__number {
                 position: absolute;
-                top: 50%;
+                top: 75%;
                 right: 20%;
                 width: 1em;
                 height: 1em;
@@ -4133,6 +4270,22 @@ a {
                 span {
                     color: $white-color;
                     font-size: 0.75em;
+                }
+            }
+        }
+    }
+}
+
+.breadcumbs {
+    .breadcumbs__container {
+        text-transform: capitalize;
+        display: flex;
+
+        .breadcrumbs__container-content {
+            .content__item {
+                &.active {
+                    font-weight: 600;
+                    color: $green-color;
                 }
             }
         }

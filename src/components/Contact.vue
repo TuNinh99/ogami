@@ -28,7 +28,9 @@
               <div class="methods__item">
                 <i class="far fa-envelope"></i>
                 <p><span>Phone:</span> 0123456789</p>
-                <p class="methods__item-bottom"><span>Mail:</span> info.deercreative@gmail.com</p>
+                <p class="methods__item-bottom">
+                  <span>Mail:</span> info.deercreative@gmail.com
+                </p>
               </div>
             </div>
             <div class="col-12 col-sm-4 none-padding">
@@ -115,7 +117,7 @@ export default {
         }
       }
       if (checkValue === explains.length) {
-          this.notify("Message has been sent!");
+        this.notify("Message has been sent!");
       }
       this.name = "";
       this.email = "";
@@ -161,6 +163,16 @@ export default {
       const element = document.querySelector(selector);
       return element;
     },
+  },
+  created() {
+    this.$store.state.breadcrumbs[0] = "/ contact";
+  },
+  mounted() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

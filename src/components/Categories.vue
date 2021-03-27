@@ -2,7 +2,7 @@
   <div class="categories">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-sm-6 col-md-3 item">
+        <div class="col-6 col-md-3 item">
           <div class="categories__item">
             <div class="categories__item-img">
               <span>F</span>
@@ -15,7 +15,7 @@
             <p>12 items</p>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3 item">
+        <div class="col-6 col-md-3 item">
           <div class="categories__item">
             <div class="categories__item-img">
               <span>D</span>
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-md-3 item">
+        <div class="col-6 col-md-3 item">
           <div class="categories__item">
             <div class="categories__item-img">
               <span>V</span>
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <div class="col-12 col-sm-6 col-md-3 item">
+        <div class="col-6 col-md-3 item">
           <div class="categories__item">
             <div class="categories__item-img">
               <span>J</span>
@@ -66,6 +66,3 @@ export default {
   name: "categories",
 };
 </script>
-
-<style>
-</style>

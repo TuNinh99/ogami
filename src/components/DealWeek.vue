@@ -15,13 +15,13 @@
       </div>
       <div class="products__wraper row" v-if="!this.blank">
         <div
-          class="col-12 col-sm-6 col-md-4 col-lg-3 item"
-          v-for="product in this.$store.state.valueFilter"
-          :key="product.id"
+          class="col-6 col-md-4 col-lg-3 item"
+          v-for="(product, index) in this.$store.state.valueFilter"
+          :key="index"
           :id="product.id"
           @click.prevent="goProductDetail(product)"
         >
-          <div class="products__wraper-item">
+          <div class="products__wraper-item" v-if="index < 4">
             <router-link
               :to="{ name: 'products', params: { name: product.name } }"
             >
@@ -120,10 +120,8 @@ export default {
       const values = Object.values(data);
       const newValues = values.sort((a, b) => b.transaction - a.transaction);
       const result = [];
-      newValues.map((value, index) => {
-        if (index < 4) {
-          result.push(value);
-        }
+      newValues.map(value => {
+        result.push(value);
       });
       return result;
     },

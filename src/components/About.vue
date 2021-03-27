@@ -342,10 +342,17 @@ export default {
     this.engineers = 0;
     this.farms = 0;
     this.countup(20);
+
+    this.$store.state.breadcrumbs[0] = "/ about";
   },
   mounted() {
     window.addEventListener("load", () => {
       this.countup(20);
+    });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
   },
 };

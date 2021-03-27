@@ -216,8 +216,15 @@ export default {
   },
   created() {
     this.$store.state.stepActive == 0;
-
     this.cart = JSON.parse(localStorage.getItem("cart"));
+    this.$store.state.breadcrumbs[0] = "/ cart";
+  },
+  mounted() {
+    window.scrollTo({
+      top: 200,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

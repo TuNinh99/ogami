@@ -100,7 +100,8 @@
             <button class="content__btn-card" @click.prevent="handleAddCart">
               add to card
             </button>
-            <button class="content__btn-buy">buy now</button>
+            <button class="content__btn-buy" @click.prevent="handleBuyNow">buy now
+            </button>
           </div>
           <div class="content__share">
             <span class="content__share-title">Share link: </span>
@@ -208,6 +209,10 @@ export default {
         }
       }
     },
+    handleBuyNow(){
+      this.handleAddCart();
+      this.$router.push({ name:'cart'});
+    },
     handleAddCart() {
       if (localStorage.getItem("cart") === "") {
         const listProducts = [];
@@ -228,12 +233,11 @@ export default {
         });
         if (check === listProducts.length) {
           listProducts.push(this.inforProduct(product));
-          this.showMessage('Product added to cart');
-        }else {
-          this.showMessage('shopping cart is already');
+          this.showMessage("Product added to cart");
+        } else {
+          this.showMessage("shopping cart is already");
         }
         this.$store.state.amount = listProducts.length;
-        console.log(this.$store.state.amount);
         const cart = JSON.stringify(listProducts);
         localStorage.setItem("cart", cart);
       }
@@ -254,6 +258,16 @@ export default {
         this.$store.state.showMessage = !this.$store.state.showMessage;
       }, 2500);
     },
+  },
+  created() {
+    this.$store.state.breadcrumbs[0] = "/ product";
+  },
+  mounted() {
+    window.scrollTo({
+      top: 300,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

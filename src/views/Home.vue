@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" style="overflow-x: hidden">
     <the-header @toggleLayer="toggleLayer" />
     <router-view></router-view>
     <partner />
@@ -23,12 +23,17 @@
           class="options__toolbar-item item-bag"
           ><i class="fas fa-shopping-bag"></i>
           <div class="item__number">
-            <span>{{ this.cart.length }}</span>
+            <span>{{ this.$store.state.amount }}</span>
           </div>
         </router-link>
       </div>
     </div>
     <div :class="{ body__layer: this.showBodyLayer }"></div>
+    <button class="mobileShop show">
+      <router-link :to="{ name: 'foods'}">
+        <i class="fas fa-cart-plus"></i>
+      </router-link>
+    </button>
   </div>
 </template>
 

@@ -2,13 +2,13 @@
   <div class="foods">
     <div class="wraper row">
       <div
-        class="col-12 col-sm-6 col-md-4 item"
+        class="col-6 col-md-4 item"
         v-for="food in sortProducts()"
         :key="food.id"
         :id="food.id"
         @click.prevent="sendFood(food)"
       >
-        <router-link :to="{ name: 'products' , params: {name: food.name}}">
+        <router-link :to="{ name: 'products', params: { name: food.name } }">
           <div class="wraper-item">
             <div class="item__image">
               <img :src="food.images.item1" alt="" />
@@ -65,19 +65,27 @@ export default {
     },
     sortProducts() {
       const modeSort = this.$store.state.sort;
-      const foods = Object.values(this.products  || {});
+      const foods = Object.values(this.products || {});
 
       if (modeSort === "a to z") {
         foods.sort((a, b) => {
-          if (a.name < b.name) {return -1;}
-          if (a.name > b.name) {return 1;}
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
           return 0;
         });
       } else {
         if (modeSort === "z to a") {
           foods.sort((a, b) => {
-            if (a.name < b.name) {return 1;}
-            if (a.name > b.name) {return -1;}
+            if (a.name < b.name) {
+              return 1;
+            }
+            if (a.name > b.name) {
+              return -1;
+            }
             return 0;
           });
         } else {
@@ -101,6 +109,14 @@ export default {
       "https://ogami-shop-default-rtdb.firebaseio.com/food.json"
     ).then((response) => response.json());
     this.products = data;
+    this.$store.state.breadcrumbs[0] = "/ shop";
+  },
+  mounted() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

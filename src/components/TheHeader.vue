@@ -79,43 +79,20 @@
             />
           </router-link>
           <ul class="header__nav-navbar">
-            <li class="navbar__item">
-              <router-link
-                to="/"
-                class="navbar__item-heading"
-                active-class="active"
-                exact
-                >home</router-link
-              >
+            <li class="navbar__item active" @click.prevent="isActive">
+              <router-link to="/">home</router-link>
             </li>
-            <li class="navbar__item">
-              <router-link
-                :to="{ name: 'foods' }"
-                class="navbar__item-heading"
-                active-class="active"
-                >shop</router-link
-              >
+            <li class="navbar__item" @click.prevent="isActive">
+              <router-link :to="{ name: 'foods' }">shop</router-link>
             </li>
-            <li class="navbar__item">
-              <a href="#" class="navbar__item-heading" active-class="active"
-                >Services</a
-              >
+            <li class="navbar__item" @click.prevent="isActive">
+              <router-link :to="{ name: 'services' }">Services</router-link>
             </li>
-            <li class="navbar__item">
-              <router-link
-                :to="{ name: 'about' }"
-                class="navbar__item-heading"
-                active-class="active"
-                >About us</router-link
-              >
+            <li class="navbar__item" @click.prevent="isActive">
+              <router-link :to="{ name: 'about' }">About us</router-link>
             </li>
-            <li class="navbar__item">
-              <router-link
-                :to="{ name: 'contact' }"
-                class="navbar__item-heading"
-                active-class="active"
-                >Contact us</router-link
-              >
+            <li class="navbar__item" @click.prevent="isActive">
+              <router-link :to="{ name: 'contact' }">Contact us</router-link>
             </li>
           </ul>
           <div class="header__nav-function">
@@ -146,60 +123,46 @@
               </div>
             </div>
             <ul class="mobile__nav">
-              <li @click.prevent="closeMenuMobile">
-                <router-link
-                  to="/"
-                  class="mobile__nav-item"
-                  active-class="active"
-                  exact
+              <li @click.prevent="handleNavMobile">
+                <router-link to="/" class="mobile__nav-item active"
                   >home</router-link
                 >
               </li>
-              <li @click.prevent="closeMenuMobile">
-                <router-link
-                  :to="{ name: 'foods' }"
-                  class="mobile__nav-item"
-                  active-class="active"
+              <li @click.prevent="handleNavMobile">
+                <router-link :to="{ name: 'foods' }" class="mobile__nav-item"
                   >shop</router-link
                 >
               </li>
-              <li @click.prevent="closeMenuMobile">
-                <router-link
-                  :to="{ name: 'services' }"
-                  class="mobile__nav-item"
-                  active-class="active"
+              <li @click.prevent="handleNavMobile">
+                <router-link :to="{ name: 'services' }" class="mobile__nav-item"
                   >Services</router-link
                 >
               </li>
-              <li @click.prevent="closeMenuMobile">
-                <router-link
-                  :to="{ name: 'about' }"
-                  class="mobile__nav-item"
-                  active-class="active"
+              <li @click.prevent="handleNavMobile">
+                <router-link :to="{ name: 'about' }" class="mobile__nav-item"
                   >About us</router-link
                 >
               </li>
-              <li @click.prevent="closeMenuMobile">
-                <router-link
-                  :to="{ name: 'contact' }"
-                  class="mobile__nav-item"
-                  active-class="active"
+              <li @click.prevent="handleNavMobile">
+                <router-link :to="{ name: 'contact' }" class="mobile__nav-item"
                   >Contact us</router-link
                 >
               </li>
-              <li @click.prevent="closeMenuMobile">
-                <router-link
-                  :to="{ name: 'login' }"
-                  class="mobile__nav-item"
-                  active-class="active"
+              <li @click.prevent="handleNavMobile">
+                <router-link :to="{ name: 'login' }" class="mobile__nav-item"
                   >Login</router-link
                 >
               </li>
-              <li @click.prevent="closeMenuMobile">
+              <li @click.prevent="handleNavMobile">
+                <router-link :to="{ name: 'register' }" class="mobile__nav-item"
+                  >Register</router-link
+                >
+              </li>
+              <li @click.prevent="handleNavMobile">
                 <a
                   :to="{ name: 'login' }"
                   class="mobile__nav-item"
-  
+                  style="border: none"
                   >Logout</a
                 >
               </li>
@@ -376,7 +339,22 @@ export default {
       body.classList.remove("body__transform");
       headerMenu.classList.add("fixed");
       this.$emit("toggleLayer");
-      return false;
+    },
+    handleNavMobile(e) {
+      this.closeMenuMobile();
+      const itemsEl = document.querySelectorAll(".mobile__nav li a");
+      for (let i = 0; i < itemsEl.length; i++) {
+        itemsEl[i].classList.remove("active");
+      }
+      e.target.classList.add("active");
+      this.manipulateDOM(".header__menu", "remove", "fixed");
+    },
+    isActive(e) {
+      const navItems = document.querySelectorAll(".navbar__item ");
+      for (let i = 0; i < navItems.length; i++) {
+        navItems[i].classList.remove("active");
+      }
+      e.target.parentNode.classList.add("active");
     },
   },
   created() {
@@ -385,7 +363,7 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 50) {
+      if (window.pageYOffset > 200) {
         this.manipulateDOM(".header__top", "add", "hidden");
         this.manipulateDOM(".header__function", "add", "hidden");
         this.manipulateDOM(".header__menu", "add", "fixed");

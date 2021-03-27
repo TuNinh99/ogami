@@ -1,6 +1,9 @@
 <template>
   <div class="login">
     <div class="container">
+      <div class="login__breadcrumbs">
+        <breadcumbs />
+      </div>
       <div class="login__auth">
         <h2>login</h2>
         <div class="login__auth-form">
@@ -8,14 +11,24 @@
             <div class="form__group">
               <label for="username">Username or email address</label>
               <div class="form__group-input">
-                <input type="text" id="username" v-model="username" @input="isUser(username)"/>
+                <input
+                  type="text"
+                  id="username"
+                  v-model="username"
+                  @input="isUser(username)"
+                />
               </div>
               <div class="form__group-explain username"></div>
             </div>
             <div class="form__group">
               <label for="password">Password</label>
               <div class="form__group-input">
-                <input type="password" id="password" v-model="password"                   @input="isPassword(password)"/>
+                <input
+                  type="password"
+                  id="password"
+                  v-model="password"
+                  @input="isPassword(password)"
+                />
                 <div class="input__eye">
                   <span
                     :class="{ hidden: !this.showPassword }"
@@ -41,9 +54,16 @@
               </div>
             </div>
             <div class="form__group form__button">
-              <button class="form__button-login" @click.prevent="validLoginForm">sign in</button>
-              <router-link :to="{name: 'register'}">
-                  <button class="form__button-create">or create an account</button>
+              <button
+                class="form__button-login"
+                @click.prevent="validLoginForm"
+              >
+                sign in
+              </button>
+              <router-link :to="{ name: 'register' }">
+                <button class="form__button-create">
+                  or create an account
+                </button>
               </router-link>
             </div>
           </form>
@@ -54,7 +74,9 @@
 </template>
 
 <script>
+import Breadcumbs from "@/components/Breadcumbs.vue";
 export default {
+  components: { Breadcumbs },
   name: "login",
   data() {
     return {
@@ -72,8 +94,8 @@ export default {
         : (passwordElement.type = "password");
     },
     validLoginForm() {
-        this.isUser(this.username);
-        this.isPassword(this.password);
+      this.isUser(this.username);
+      this.isPassword(this.password);
     },
     isUser(username) {
       const explain = this.getElement(".form__group-explain.username");
@@ -95,6 +117,16 @@ export default {
       const element = document.querySelector(selector);
       return element;
     },
+  },
+  created() {
+    this.$store.state.breadcrumbs[0] = "/ Login";
+  },
+  mounted() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   },
 };
 </script>

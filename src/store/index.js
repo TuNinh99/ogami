@@ -20,6 +20,7 @@ export default createStore({
     amount: 0,
     totalPay: 0,
     stepActive: 0,
+    breadcrumbs: ['home'],
   },
   getters: {
     compare: state => {
