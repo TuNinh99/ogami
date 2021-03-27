@@ -513,7 +513,7 @@ a {
                 display: none;
 
                 i {
-                    font-size: $bg-size;
+                    font-size: 2em;
                     color: $light-gray-color;
                 }
 
@@ -2280,6 +2280,14 @@ a {
 
     .breadcumbs__container {
         padding: 0;
+        .el-breadcrumb__inner.is-link{
+            &:hover{
+                color: $green-color;
+            }
+            i{
+                margin-right: .5em;
+            }
+        }
     }
 }
 
@@ -3184,49 +3192,25 @@ a {
     }
 }
 
-.message {
-    width: 12em;
-    height: 2.5em;
-    padding: 0 .5em;
-    background-color: $white-color;
-    @include flex-box;
-    opacity: 0;
-    visibility: hidden;
-    transition: .2s;
-    position: absolute;
-    top: 1em;
-    right: 1em;
-    z-index: 9999;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-
-    &.show {
-        opacity: 1;
-        visibility: visible;
-        position: fixed;
-        top: 1em;
-        right: 1em;
-    }
-
-    .message__check {
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 1.5em;
-        text-align: center;
-        line-height: 1.5em;
-        background-color: $green-color;
-
-        i {
-            color: $white-color;
-            font-size: .75em;
+.el-alert{
+    display: none;
+    &.is-light{
+        display: flex;
+        align-items: center;
+        &.show{
+            display: block;
+            position: fixed;
+            top: 5%;
+            right: 3%;
+            width: 15em;
+            height: 3em;
+            z-index: 999999;
         }
     }
-
-    .message__infor {
-        font-size: .75em;
-        color: $dark-color;
+    .el-alert__content{
+        font-weight: 600;
     }
 }
-
 .checkout {
     margin-bottom: 3.75em;
 
@@ -4140,10 +4124,10 @@ a {
     position: fixed;
     bottom: 2em;
     right: 2em;
-    width: 3.5em;
-    height: 3.5em;
+    width: 5em;
+    height: 5em;
     text-align: center;
-    line-height: 3.5em;
+    line-height: 5em;
     border-radius: 100%;
     background-color: $dark-color;
     opacity: 0;
@@ -4165,10 +4149,10 @@ a {
     position: fixed;
     bottom: 2em;
     left: 2em;
-    width: 3.5em;
-    height: 3.5em;
+    width: 5em;
+    height: 5em;
     text-align: center;
-    line-height: 3.5em;
+    line-height: 5em;
     border-radius: 100%;
     background-color: #60ae13;
     opacity: 0;
@@ -4177,7 +4161,7 @@ a {
 
     i {
         color: $white-color;
-        font-size: $sm-size;
+        font-size: $md-size;
     }
 
     @include mobile {
@@ -4241,7 +4225,7 @@ a {
         background-color: $light-color;
 
         .options__toolbar-item {
-            padding: 1em 1em 0 .5em;
+            padding: .75em;
 
             &.item-bag {
                 position: relative;
@@ -4258,8 +4242,8 @@ a {
 
             .item__number {
                 position: absolute;
-                top: 75%;
-                right: 20%;
+                top: 55%;
+                right: 10%;
                 width: 1em;
                 height: 1em;
                 border-radius: 1em;

@@ -20,6 +20,7 @@ export default {
   name: "completed",
   created() {
     this.$store.state.stepActive = 2;
+    this.$store.state.breadcrumbs[0] = "completed";
   },
 };
 </script>

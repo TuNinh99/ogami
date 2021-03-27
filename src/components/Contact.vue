@@ -165,7 +165,7 @@ export default {
     },
   },
   created() {
-    this.$store.state.breadcrumbs[0] = "/ contact";
+    this.$store.state.breadcrumbs[0] = "contact";
   },
   mounted() {
     window.scrollTo({

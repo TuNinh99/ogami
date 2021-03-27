@@ -100,7 +100,8 @@
             <button class="content__btn-card" @click.prevent="handleAddCart">
               add to card
             </button>
-            <button class="content__btn-buy" @click.prevent="handleBuyNow">buy now
+            <button class="content__btn-buy" @click.prevent="handleBuyNow">
+              buy now
             </button>
           </div>
           <div class="content__share">
@@ -209,9 +210,9 @@ export default {
         }
       }
     },
-    handleBuyNow(){
+    handleBuyNow() {
       this.handleAddCart();
-      this.$router.push({ name:'cart'});
+      this.$router.push({ name: "cart" });
     },
     handleAddCart() {
       if (localStorage.getItem("cart") === "") {
@@ -234,8 +235,10 @@ export default {
         if (check === listProducts.length) {
           listProducts.push(this.inforProduct(product));
           this.showMessage("Product added to cart");
+          this.$store.state.typeMessage = "success";
         } else {
           this.showMessage("shopping cart is already");
+          this.$store.state.typeMessage = "error";
         }
         this.$store.state.amount = listProducts.length;
         const cart = JSON.stringify(listProducts);
@@ -260,11 +263,11 @@ export default {
     },
   },
   created() {
-    this.$store.state.breadcrumbs[0] = "/ product";
+    this.$store.state.breadcrumbs[0] = "product";
   },
   mounted() {
     window.scrollTo({
-      top: 300,
+      top: 200,
       left: 0,
       behavior: "smooth",
     });

@@ -330,7 +330,7 @@ a.active {
   display: none;
 }
 .header .header__menu .header__nav .header__nav-icon i {
-  font-size: 1.875em;
+  font-size: 2em;
   color: #636363;
 }
 @media only screen and (max-width: 767px) {
@@ -2052,6 +2052,12 @@ a.active {
 .breadcumbs .breadcumbs__container {
   padding: 0;
 }
+.breadcumbs .breadcumbs__container .el-breadcrumb__inner.is-link:hover {
+  color: #88c74a;
+}
+.breadcumbs .breadcumbs__container .el-breadcrumb__inner.is-link i {
+  margin-right: 0.5em;
+}
 
 .sidebar .sidebar__departments h4 {
   text-transform: capitalize;
@@ -2878,45 +2884,24 @@ a.active {
   opacity: 0.8;
 }
 
-.message {
-  width: 12em;
-  height: 2.5em;
-  padding: 0 0.5em;
-  background-color: #fff;
+.el-alert {
+  display: none;
+}
+.el-alert.is-light {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.2s;
-  position: absolute;
-  top: 1em;
-  right: 1em;
-  z-index: 9999;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
-.message.show {
-  opacity: 1;
-  visibility: visible;
+.el-alert.is-light.show {
+  display: block;
   position: fixed;
-  top: 1em;
-  right: 1em;
+  top: 5%;
+  right: 3%;
+  width: 15em;
+  height: 3em;
+  z-index: 999999;
 }
-.message .message__check {
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 1.5em;
-  text-align: center;
-  line-height: 1.5em;
-  background-color: #88c74a;
-}
-.message .message__check i {
-  color: #fff;
-  font-size: 0.75em;
-}
-.message .message__infor {
-  font-size: 0.75em;
-  color: rgba(0, 0, 0, 0.85);
+.el-alert .el-alert__content {
+  font-weight: 600;
 }
 
 .checkout {
@@ -3662,10 +3647,10 @@ a.active {
   position: fixed;
   bottom: 2em;
   right: 2em;
-  width: 3.5em;
-  height: 3.5em;
+  width: 5em;
+  height: 5em;
   text-align: center;
-  line-height: 3.5em;
+  line-height: 5em;
   border-radius: 100%;
   background-color: rgba(0, 0, 0, 0.85);
   opacity: 0;
@@ -3685,10 +3670,10 @@ a.active {
   position: fixed;
   bottom: 2em;
   left: 2em;
-  width: 3.5em;
-  height: 3.5em;
+  width: 5em;
+  height: 5em;
   text-align: center;
-  line-height: 3.5em;
+  line-height: 5em;
   border-radius: 100%;
   background-color: #60ae13;
   opacity: 0;
@@ -3697,7 +3682,7 @@ a.active {
 }
 .mobileShop i {
   color: #fff;
-  font-size: 1.25em;
+  font-size: 1.375em;
 }
 @media only screen and (max-width: 767px) {
   .mobileShop.show {
@@ -3749,7 +3734,7 @@ a.active {
   background-color: #eaeff4;
 }
 .options .options__toolbar .options__toolbar-item {
-  padding: 1em 1em 0 0.5em;
+  padding: 0.75em;
 }
 .options .options__toolbar .options__toolbar-item.item-bag {
   position: relative;
@@ -3763,8 +3748,8 @@ a.active {
 }
 .options .options__toolbar .options__toolbar-item .item__number {
   position: absolute;
-  top: 75%;
-  right: 20%;
+  top: 55%;
+  right: 10%;
   width: 1em;
   height: 1em;
   border-radius: 1em;

@@ -1,9 +1,11 @@
 <template>
   <div class="breadcumbs">
     <div class="breadcumbs__container container">
-      <div class="breadcrumbs__container-content">
-        <span class="content__item"> <i class="fas fa-home"></i> Home </span>
-        <span
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">
+          <i class="fas fa-home"></i>Home</el-breadcrumb-item
+        >
+        <el-breadcrumb-item
           :class="{
             content__item: true,
             active: this.$store.state.breadcrumbs.length < 2,
@@ -12,17 +14,9 @@
             this.$store.state.breadcrumbs.length < 2 &&
             this.$store.state.breadcrumbs[0] !== 'home'
           "
-          >{{ this.$store.state.breadcrumbs[0] }}</span
+          >{{ this.$store.state.breadcrumbs[0] }}</el-breadcrumb-item
         >
-        <span
-          :class="{
-            content__item: true,
-            active: this.$store.state.breadcrumbs.length < 3,
-          }"
-          v-if="this.$store.state.breadcrumbs.length < 3"
-          >{{ this.$store.state.breadcrumbs[1] }}</span
-        >
-      </div>
+      </el-breadcrumb>
     </div>
   </div>
 </template>
@@ -32,3 +26,4 @@ export default {
   name: "breadcumbs",
 };
 </script>
+

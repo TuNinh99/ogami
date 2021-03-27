@@ -13,55 +13,55 @@
           <li class="nav__item" @click="handleProductsWeek">juice</li>
         </ul>
       </div>
-      <div class="products__wraper row" v-if="!this.blank">
-        <div
-          class="col-6 col-md-4 col-lg-3 item"
-          v-for="(product, index) in this.$store.state.valueFilter"
-          :key="index"
-          :id="product.id"
-          @click.prevent="goProductDetail(product)"
-        >
-          <div class="products__wraper-item" v-if="index < 4">
-            <router-link
-              :to="{ name: 'products', params: { name: product.name } }"
-            >
-              <div class="item__image">
-                <img :src="product.images.item1" alt="" />
-              </div>
-              <div class="item__type">
-                <h6>{{ product.type }}</h6>
-                <h3>{{ product.name }}</h3>
-              </div>
-              <div class="item__price">
-                <h6>{{ product.price }} US$</h6>
-                <del v-if="product.sale !== product.price"
-                  >{{ product.sale }} US$</del
-                >
-              </div>
-              <div class="item__select">
-                <button class="item__select-wishlist">
-                  <i class="far fa-heart"></i>
-                  <div class="wishlist__tooltip">Add to wishlist</div>
-                </button>
-                <button class="item__select-card">
-                  <i class="fas fa-shopping-bag"></i>
-                  <div class="card__tooltip">Add to card</div>
-                </button>
-                <button
-                  class="item__select-view"
-                  @click.prevent="handleQuickView(product)"
-                >
-                  <i class="far fa-eye"></i>
-                  <div class="view__tooltip">Quick view</div>
-                </button>
-              </div>
-            </router-link>
+              <div class="products__wraper row" v-if="!this.blank">
+          <div
+            class="col-6 col-md-4 col-lg-3 item"
+            v-for="(product, index) in this.$store.state.valueFilter"
+            :key="index"
+            :id="product.id"
+            @click.prevent="goProductDetail(product)"
+          >
+            <div class="products__wraper-item" v-if="index < 4">
+              <router-link
+                :to="{ name: 'products', params: { name: product.name } }"
+              >
+                <div class="item__image">
+                  <img :src="product.images.item1" alt="" />
+                </div>
+                <div class="item__type">
+                  <h6>{{ product.type }}</h6>
+                  <h3>{{ product.name }}</h3>
+                </div>
+                <div class="item__price">
+                  <h6>{{ product.price }} US$</h6>
+                  <del v-if="product.sale !== product.price"
+                    >{{ product.sale }} US$</del
+                  >
+                </div>
+                <div class="item__select">
+                  <button class="item__select-wishlist">
+                    <i class="far fa-heart"></i>
+                    <div class="wishlist__tooltip">Add to wishlist</div>
+                  </button>
+                  <button class="item__select-card">
+                    <i class="fas fa-shopping-bag"></i>
+                    <div class="card__tooltip">Add to card</div>
+                  </button>
+                  <button
+                    class="item__select-view"
+                    @click.prevent="handleQuickView(product)"
+                  >
+                    <i class="far fa-eye"></i>
+                    <div class="view__tooltip">Quick view</div>
+                  </button>
+                </div>
+              </router-link>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="products__blank" v-else>
-        <blank-product />
-      </div>
+        <div class="products__blank" v-else>
+          <blank-product />
+        </div>
     </div>
   </div>
 </template>
@@ -120,16 +120,18 @@ export default {
       const values = Object.values(data);
       const newValues = values.sort((a, b) => b.transaction - a.transaction);
       const result = [];
-      newValues.map(value => {
+      newValues.map((value) => {
         result.push(value);
       });
       return result;
     },
   },
   async created() {
+    // this.$store.state.loading = true;
     const data = await fetch(
       "https://ogami-shop-default-rtdb.firebaseio.com/food.json"
     ).then((response) => response.json());
+    // this.$store.state.loading = false;
     this.$store.state.products = data;
     this.$store.state.valueFilter = this.filterProducts(data);
     this.$store.state.foods = data;

@@ -172,7 +172,7 @@ export default {
     },
   },
   created() {
-    this.$store.state.breadcrumbs[0] = "/ register";
+    this.$store.state.breadcrumbs[0] = "register";
   },
   mounted() {
     window.scrollTo({

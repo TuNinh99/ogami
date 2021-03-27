@@ -260,6 +260,7 @@ export default {
   created() {
     this.$store.state.stepActive = 1;
     this.cart = JSON.parse(localStorage.getItem("cart"));
+    this.$store.state.breadcrumbs[0] = "checkout";
   },
 };
 </script>

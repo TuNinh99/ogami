@@ -192,8 +192,10 @@ export default {
         if (check === listProducts.length) {
           listProducts.push(this.inforProduct(product));
           this.showMessage("Product added to cart");
+          this.$store.state.typeMessage = 'success';
         } else {
-          this.showMessage("shopping cart is already");
+          this.showMessage("Shopping cart is already");
+          this.$store.state.typeMessage = 'error';
         }
         this.$store.state.amount = listProducts.length;
         this.caculateTotal(listProducts);
@@ -216,7 +218,7 @@ export default {
       setTimeout(() => {
         this.$store.state.showMessage = !this.$store.state.showMessage;
         this.handleCloseQuickView();
-      }, 2500);
+      }, 2000);
     },
     caculateTotal(listProducts) {
       const total = listProducts.reduce((total, item) => {

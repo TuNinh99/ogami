@@ -182,6 +182,8 @@ export default {
         this.$store.state.amount = this.cart.length;
         this.caculateTotal(this.cart);
       }
+
+      this.$store.state.amount = 0;
     },
     updateQuantity() {
       const quantities = [];
@@ -217,7 +219,7 @@ export default {
   created() {
     this.$store.state.stepActive == 0;
     this.cart = JSON.parse(localStorage.getItem("cart"));
-    this.$store.state.breadcrumbs[0] = "/ cart";
+    this.$store.state.breadcrumbs[0] = "cart";
   },
   mounted() {
     window.scrollTo({

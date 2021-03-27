@@ -17,6 +17,7 @@ export default createStore({
     indexItemRemove: null,
     showMessage: false,
     message: 'Product added to cart',
+    typeMessage: 'success',
     amount: 0,
     totalPay: 0,
     stepActive: 0,

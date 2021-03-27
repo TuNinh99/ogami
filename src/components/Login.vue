@@ -119,7 +119,7 @@ export default {
     },
   },
   created() {
-    this.$store.state.breadcrumbs[0] = "/ Login";
+    this.$store.state.breadcrumbs[0] = "login";
   },
   mounted() {
     window.scrollTo({

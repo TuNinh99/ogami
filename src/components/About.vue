@@ -343,7 +343,7 @@ export default {
     this.farms = 0;
     this.countup(20);
 
-    this.$store.state.breadcrumbs[0] = "/ about";
+    this.$store.state.breadcrumbs[0] = "about";
   },
   mounted() {
     window.addEventListener("load", () => {

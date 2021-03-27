@@ -5,12 +5,13 @@
     <partner />
     <the-footer />
     <quick-view />
-    <div :class="{ message: true, show: this.$store.state.showMessage }">
-      <div class="message__check">
-        <i class="fas fa-check"></i>
-      </div>
-      <div class="message__infor">{{ this.$store.state.message }}</div>
-    </div>
+    <el-alert
+      :title="this.$store.state.message"
+      :type="this.$store.state.typeMessage"
+      show-icon
+      :class="{show: this.$store.state.showMessage}"
+    >
+    </el-alert>
     <button class="backTop" @click.prevent="scrollToTop">
       <i class="fas fa-long-arrow-alt-up"></i>
     </button>
@@ -30,7 +31,7 @@
     </div>
     <div :class="{ body__layer: this.showBodyLayer }"></div>
     <button class="mobileShop show">
-      <router-link :to="{ name: 'foods'}">
+      <router-link :to="{ name: 'foods' }">
         <i class="fas fa-cart-plus"></i>
       </router-link>
     </button>
@@ -102,6 +103,11 @@ export default {
       window.pageYOffset > 500 && screen.width < 768
         ? options.classList.add("show")
         : options.classList.remove("show");
+    });
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
     });
   },
 };

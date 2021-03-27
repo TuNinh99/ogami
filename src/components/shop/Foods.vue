@@ -1,6 +1,10 @@
 <template>
   <div class="foods">
-    <div class="wraper row">
+    <div
+      class="wraper row"
+      v-loading="this.isLoading"
+      element-loading-text="Loading..."
+    >
       <div
         class="col-6 col-md-4 item"
         v-for="food in sortProducts()"
@@ -51,6 +55,7 @@ export default {
   data() {
     return {
       products: null,
+      isLoading: true,
     };
   },
   methods: {
@@ -109,7 +114,8 @@ export default {
       "https://ogami-shop-default-rtdb.firebaseio.com/food.json"
     ).then((response) => response.json());
     this.products = data;
-    this.$store.state.breadcrumbs[0] = "/ shop";
+    this.$store.state.breadcrumbs[0] = "shop";
+    this.isLoading = false;
   },
   mounted() {
     window.scrollTo({

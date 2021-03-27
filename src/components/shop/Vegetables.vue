@@ -1,5 +1,9 @@
 <template>
-  <div class="vegetables">
+  <div
+    class="vegetables"
+    v-loading="this.isLoading"
+    element-loading-text="Loading..."
+  >
     <div class="wraper row" v-if="filterVegetables().length !== 0">
       <div
         class="col-6 col-md-4 item"
@@ -57,6 +61,7 @@ export default {
   data() {
     return {
       products: null,
+      isLoading: true,
     };
   },
   methods: {
@@ -119,6 +124,7 @@ export default {
       "https://ogami-shop-default-rtdb.firebaseio.com/food.json"
     ).then((response) => response.json());
     this.products = data;
+    this.isLoading = false;
   },
   mounted() {
     window.scrollTo({

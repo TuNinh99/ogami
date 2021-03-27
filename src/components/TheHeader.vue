@@ -80,7 +80,13 @@
           </router-link>
           <ul class="header__nav-navbar">
             <li class="navbar__item active" @click.prevent="isActive">
-              <router-link to="/">home</router-link>
+              <router-link
+                to="/"
+                class="navbar__item"
+                active-class="active"
+                exact
+                >home</router-link
+              >
             </li>
             <li class="navbar__item" @click.prevent="isActive">
               <router-link :to="{ name: 'foods' }">shop</router-link>
@@ -95,6 +101,21 @@
               <router-link :to="{ name: 'contact' }">Contact us</router-link>
             </li>
           </ul>
+          <!-- <li class="navbar__item active" @click.prevent="isActive"> -->
+          <!-- <router-link to="/" class="navbar__item" active-class="active" exact>home</router-link> -->
+          <!-- </li> -->
+          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
+          <!-- <router-link :to="{ name: 'foods' }"  class="navbar__item" active-class="active">shop</router-link> -->
+          <!-- </li> -->
+          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
+          <!-- <router-link :to="{ name: 'services'}"  class="navbar__item" active-class="active">Services</router-link> -->
+          <!-- </li> -->
+          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
+          <!-- <router-link :to="{ name: 'about'}"  class="navbar__item" active-class="active">About us</router-link> -->
+          <!-- </li> -->
+          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
+          <!-- <router-link :to="{ name: 'contact' }"  class="navbar__item" active-class="active">Contact us</router-link> -->
+          <!-- </li> -->
           <div class="header__nav-function">
             <a href="#" class="function__item"><i class="far fa-heart"></i></a>
             <router-link :to="{ name: 'cart' }" class="function__item">
