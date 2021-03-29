@@ -1,5 +1,6 @@
 <template>
   <div class="contact">
+    <the-header/>
     <div class="container">
       <div class="contact__breadcumbs">
         <breadcumbs />
@@ -19,14 +20,14 @@
           <div class="row">
             <div class="col-12 col-sm-4 none-padding">
               <div class="methods__item">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="el-icon-location-outline"></i>
                 <p>60-49 Road 11378</p>
                 <p class="methods__item-bottom">New York</p>
               </div>
             </div>
             <div class="col-12 col-sm-4 none-padding">
               <div class="methods__item">
-                <i class="far fa-envelope"></i>
+                <i class="el-icon-message"></i>
                 <p><span>Phone:</span> 0123456789</p>
                 <p class="methods__item-bottom">
                   <span>Mail:</span> info.deercreative@gmail.com
@@ -35,7 +36,7 @@
             </div>
             <div class="col-12 col-sm-4 none-padding">
               <div class="methods__item">
-                <i class="far fa-clock"></i>
+                <i class="el-icon-time"></i>
                 <p><span>Week Days: </span>10:00 – 22:00</p>
                 <p class="methods__item-bottom"><span>Sunday: </span>Close</p>
               </div>
@@ -87,14 +88,17 @@
         </div>
       </div>
     </div>
+    <the-footer/>
   </div>
 </template>
 
 <script>
 import Breadcumbs from "@/components/Breadcumbs.vue";
+import TheFooter from '@/components/TheFooter.vue';
+import TheHeader from '@/components/TheHeader.vue';
 export default {
   name: "contact",
-  components: { Breadcumbs },
+  components: { Breadcumbs,TheFooter, TheHeader},
   data() {
     return {
       name: "",

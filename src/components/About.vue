@@ -1,5 +1,6 @@
 <template>
   <div class="about">
+    <the-header/>
     <div class="about__top">
       <div class="container">
         <breadcumbs />
@@ -304,14 +305,17 @@
         </div>
       </div>
     </div>
+    <the-footer/>
   </div>
 </template>
 
 <script>
 import Breadcumbs from "@/components/Breadcumbs.vue";
+import TheFooter from '@/components/TheFooter.vue';
+import TheHeader from '@/components/TheHeader.vue';
 export default {
   name: "about",
-  components: { Breadcumbs },
+  components: { Breadcumbs,TheFooter, TheHeader},
   data() {
     return {
       clients: 100,

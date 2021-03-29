@@ -62,7 +62,7 @@
           </li>
           <li class="right_login">
             <router-link :to="{ name: 'login' }">
-              <i class="fas fa-user"></i>
+              <i class="el-icon-user"></i>
               <span>Login</span>
             </router-link>
           </li>
@@ -78,48 +78,45 @@
               alt=""
             />
           </router-link>
-          <ul class="header__nav-navbar">
-            <li class="navbar__item active" @click.prevent="isActive">
-              <router-link
-                to="/"
-                class="navbar__item"
-                active-class="active"
-                exact
-                >home</router-link
-              >
-            </li>
-            <li class="navbar__item" @click.prevent="isActive">
-              <router-link :to="{ name: 'foods' }">shop</router-link>
-            </li>
-            <li class="navbar__item" @click.prevent="isActive">
-              <router-link :to="{ name: 'services' }">Services</router-link>
-            </li>
-            <li class="navbar__item" @click.prevent="isActive">
-              <router-link :to="{ name: 'about' }">About us</router-link>
-            </li>
-            <li class="navbar__item" @click.prevent="isActive">
-              <router-link :to="{ name: 'contact' }">Contact us</router-link>
-            </li>
-          </ul>
-          <!-- <li class="navbar__item active" @click.prevent="isActive"> -->
-          <!-- <router-link to="/" class="navbar__item" active-class="active" exact>home</router-link> -->
-          <!-- </li> -->
-          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
-          <!-- <router-link :to="{ name: 'foods' }"  class="navbar__item" active-class="active">shop</router-link> -->
-          <!-- </li> -->
-          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
-          <!-- <router-link :to="{ name: 'services'}"  class="navbar__item" active-class="active">Services</router-link> -->
-          <!-- </li> -->
-          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
-          <!-- <router-link :to="{ name: 'about'}"  class="navbar__item" active-class="active">About us</router-link> -->
-          <!-- </li> -->
-          <!-- <li class="navbar__item" @click.prevent="isActive"> -->
-          <!-- <router-link :to="{ name: 'contact' }"  class="navbar__item" active-class="active">Contact us</router-link> -->
-          <!-- </li> -->
+          <div class="header__nav-navbar">
+            <router-link to="/" class="navbar__item" active-class="active" exact
+              >home</router-link
+            >
+            <router-link
+              :to="{ name: 'foods' }"
+              class="navbar__item"
+              active-class="active"
+              >shop</router-link
+            >
+            <router-link
+              :to="{ name: 'services' }"
+              class="navbar__item"
+              active-class="active"
+              >Services</router-link
+            >
+            <router-link
+              :to="{ name: 'about' }"
+              class="navbar__item"
+              active-class="active"
+              >About us</router-link
+            >
+            <router-link
+              :to="{ name: 'contact' }"
+              class="navbar__item"
+              active-class="active"
+              >Contact us</router-link
+            >
+          </div>
+
           <div class="header__nav-function">
-            <a href="#" class="function__item"><i class="far fa-heart"></i></a>
+            <router-link :to="{ name: 'wish-list' }" class="function__item">
+              <i class="far fa-heart"></i>
+              <div class="function__item-number wish-list">
+                <span>{{ this.$store.state.amountWishlist }}</span>
+              </div>
+            </router-link>
             <router-link :to="{ name: 'cart' }" class="function__item">
-              <i class="fas fa-shopping-bag"></i>
+              <i class="el-icon-shopping-cart-2" style="font-weight: 600"></i>
               <div class="function__item-number">
                 <span>{{ this.$store.state.amount }}</span>
               </div>
@@ -140,46 +137,68 @@
                 />
               </div>
               <div class="mobile__top-close" @click.prevent="closeMenuMobile">
-                <i class="fas fa-times"></i>
+                <i class="el-icon-close"></i>
               </div>
             </div>
             <ul class="mobile__nav">
-              <li @click.prevent="handleNavMobile">
-                <router-link to="/" class="mobile__nav-item active"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  to="/"
+                  class="mobile__nav-item"
+                  active-class="active"
+                  exact
                   >home</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
-                <router-link :to="{ name: 'foods' }" class="mobile__nav-item"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  :to="{ name: 'foods' }"
+                  class="mobile__nav-item"
+                  active-class="active"
                   >shop</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
-                <router-link :to="{ name: 'services' }" class="mobile__nav-item"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  :to="{ name: 'services' }"
+                  class="mobile__nav-item"
+                  active-class="active"
                   >Services</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
-                <router-link :to="{ name: 'about' }" class="mobile__nav-item"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  :to="{ name: 'about' }"
+                  class="mobile__nav-item"
+                  active-class="active"
                   >About us</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
-                <router-link :to="{ name: 'contact' }" class="mobile__nav-item"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  :to="{ name: 'contact' }"
+                  class="mobile__nav-item"
+                  active-class="active"
                   >Contact us</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
-                <router-link :to="{ name: 'login' }" class="mobile__nav-item"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  :to="{ name: 'login' }"
+                  class="mobile__nav-item"
+                  active-class="active"
                   >Login</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
-                <router-link :to="{ name: 'register' }" class="mobile__nav-item"
+              <li @click.prevent="closeMenuMobile">
+                <router-link
+                  :to="{ name: 'register' }"
+                  class="mobile__nav-item"
+                  active-class="active"
                   >Register</router-link
                 >
               </li>
-              <li @click.prevent="handleNavMobile">
+              <li @click.prevent="closeMenuMobile">
                 <a
                   :to="{ name: 'login' }"
                   class="mobile__nav-item"
@@ -189,6 +208,10 @@
               </li>
             </ul>
           </div>
+          <div
+            class="header__nav-layout"
+            @click.prevent="closeMenuMobile"
+          ></div>
         </div>
         <div class="header__function">
           <div class="header__function-departments">
@@ -347,8 +370,12 @@ export default {
       const menuMobile = document.querySelector(".header__nav-mobile");
       const headerMenu = document.querySelector(".header__menu");
       const body = document.querySelector("body");
+      const layout = document.querySelector(".header__nav-layout");
+      const options = document.querySelector(".options");
       menuMobile.classList.add("show");
       body.classList.add("body__transform");
+      layout.classList.add("fixed");
+      options.classList.add("hidden");
       headerMenu.classList.remove("fixed");
       this.$emit("toggleLayer");
     },
@@ -356,26 +383,14 @@ export default {
       const menuMobile = document.querySelector(".header__nav-mobile");
       const headerMenu = document.querySelector(".header__menu");
       const body = document.querySelector("body");
+      const layout = document.querySelector(".header__nav-layout");
+      const options = document.querySelector(".options");
       menuMobile.classList.remove("show");
       body.classList.remove("body__transform");
+      layout.classList.remove("fixed");
+      options.classList.remove("hidden");
       headerMenu.classList.add("fixed");
       this.$emit("toggleLayer");
-    },
-    handleNavMobile(e) {
-      this.closeMenuMobile();
-      const itemsEl = document.querySelectorAll(".mobile__nav li a");
-      for (let i = 0; i < itemsEl.length; i++) {
-        itemsEl[i].classList.remove("active");
-      }
-      e.target.classList.add("active");
-      this.manipulateDOM(".header__menu", "remove", "fixed");
-    },
-    isActive(e) {
-      const navItems = document.querySelectorAll(".navbar__item ");
-      for (let i = 0; i < navItems.length; i++) {
-        navItems[i].classList.remove("active");
-      }
-      e.target.parentNode.classList.add("active");
     },
   },
   created() {

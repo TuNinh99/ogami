@@ -44,19 +44,7 @@
                 {{ getItem().price }}
                 <span>US$ / {{ getItem().unit }}</span>
               </h5>
-              <ul class="price__rate">
-                <li
-                  :class="{
-                    'price__rate-star': true,
-                    active: this.rate[index],
-                  }"
-                  v-for="(star, index) in this.rate"
-                  :key="index"
-                  @click.prevent="handleRate(index)"
-                >
-                  <i class="fas fa-star"></i>
-                </li>
-              </ul>
+              <el-rate v-model="rateValue"></el-rate>
             </div>
             <div class="content__main-quantity">
               <div
@@ -163,17 +151,12 @@ export default {
       quantity: 1,
       delivery: 0,
       images: [],
-      rate: [true, true, true, true, false],
+      rateValue: 4,
     };
   },
   methods: {
     images_item(item) {
       return Object.values(item.images);
-    },
-    handleRate(num) {
-      for (let i = 0; i < this.rate.length; i++) {
-        i <= num ? (this.rate[i] = true) : (this.rate[i] = false);
-      }
     },
     getItem() {
       return this.$store.state.item;

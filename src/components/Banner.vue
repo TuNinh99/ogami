@@ -10,8 +10,8 @@
         :loop="true"
         :autoplay="{ delay: 5000 }"
         :navigation="{
-          nextEl: '.banner__previous',
-          prevEl: '.banner__next',
+          nextEl: '.banner__next',
+          prevEl: '.banner__previous', 
         }"
       >
         <!-- item 1  -->

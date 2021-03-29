@@ -1,5 +1,6 @@
 <template>
   <div class="shop">
+    <the-header/>
     <div class="shop__container container">
       <div class="shop__container-breadcumbs">
         <breadcumbs />
@@ -14,6 +15,7 @@
         </div>
       </div>
     </div>
+    <the-footer/>
   </div>
 </template>
 
@@ -21,6 +23,8 @@
 import Breadcumbs from "@/components/Breadcumbs.vue";
 import Sidebar from "@/components/Sidebar.vue";
 import TopContentShop from "@/components/shop/TopContentShop.vue";
+import TheFooter from "@/components/TheFooter.vue";
+import theHeader from "@/components/TheHeader.vue";
 
 export default {
   name: "shop",
@@ -28,6 +32,8 @@ export default {
     Breadcumbs,
     Sidebar,
     TopContentShop,
+    theHeader,
+    TheFooter
   },
   async created() {
     const data = await fetch(

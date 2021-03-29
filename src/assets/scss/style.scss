@@ -224,6 +224,41 @@ a {
     }
 }
 
+[class^=el-icon-] {
+    font-size: 1.25em;
+}
+
+.el-button {
+    &.is-circle {
+        min-height: 3em;
+        min-width: 3em;
+        font-size: 1.125em;
+    }
+}
+
+.el-rate__item {
+    font-size: 1em;
+}
+
+.el-pagination {
+    &.is-background {
+        .el-pager {
+            li:not(.disabled) {
+                &.active {
+                    background-color: $green-color;
+                    &:hover{
+                        color: $white-color;
+                    }
+                }
+
+                &:hover {
+                    color: $green-color;
+                }
+            }
+        }
+    }
+}
+
 .fixed {
     position: relative;
     width: calc(100% - 17px);
@@ -388,7 +423,8 @@ a {
                 }
 
                 i {
-                    font-size: $xl-size;
+                    font-size: $sm-size;
+                    font-weight: 700;
                 }
 
                 span {
@@ -432,26 +468,20 @@ a {
                 @include flex-box;
 
                 .navbar__item {
-                    text-transform: uppercase;
                     font-weight: 600;
                     margin: 0 30px;
                     transition: $animate;
+                    text-transform: uppercase;
+                    color: $dark-light-color;
+                    font-size: $min-size;
 
-                    a {
-                        color: $dark-light-color;
-                        font-size: $min-size;
-                    }
 
                     &:hover {
-                        a {
-                            color: $green-color;
-                        }
+                        color: $green-color;
                     }
 
                     &.active {
-                        a {
-                            color: $green-color;
-                        }
+                        color: $green-color;
                     }
 
                     @include tablet {
@@ -500,6 +530,11 @@ a {
                         span {
                             color: $white-color;
                             font-size: .75em;
+                        }
+
+                        &.wish-list {
+                            top: 55%;
+                            left: 20%;
                         }
                     }
                 }
@@ -578,6 +613,17 @@ a {
                             color: $white-color;
                         }
                     }
+                }
+            }
+
+            .header__nav-layout {
+                display: none;
+
+                &.fixed {
+                    display: block;
+                    @include fixed-body;
+                    background-color: rgba(0, 0, 0, 0.64);
+                    z-index: 5555;
                 }
             }
         }
@@ -1100,7 +1146,7 @@ a {
             margin-top: 4em;
 
             .products__wraper-item {
-                height: 320px;
+                height: 20em;
                 border: 1px solid $border-color;
                 margin-bottom: 10%;
                 padding: 1.5em;
@@ -1109,61 +1155,62 @@ a {
                 cursor: pointer;
 
                 @include mobile {
-                    height: 15em;
+                    height: 17em;
                     padding: 0.75em 0.5em;
                     margin-bottom: 1em;
                 }
 
-                &:before {
-                    content: '';
-                    position: absolute;
-                    display: block;
-                    bottom: -20px;
-                    left: 0;
-                    height: 0;
-                    width: 100%;
-                    z-index: -1;
-                    height: calc(100% + 30px);
-                    visibility: hidden;
-                    box-shadow: 0px 20px 32px 0 rgb(53 78 84 / 15%);
-                    transition: .2s ease-in-out;
-                }
-
-                &:hover {
-                    border: 0 transparent;
-                    z-index: 20;
-
+                @media (hover:hover) {
                     &:before {
-                        visibility: visible;
-                        opacity: 1;
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        bottom: -20px;
+                        left: 0;
+                        width: 100%;
+                        z-index: -1;
+                        height: calc(100% + 30px);
+                        visibility: hidden;
+                        box-shadow: 0px 20px 32px 0 rgb(53 78 84 / 15%);
+                        transition: .2s ease-in-out;
+    
                     }
+                    &:hover {
+                        border: 0 transparent;
+                        z-index: 20;
 
-                    .item__select {
-                        opacity: 1;
-                        visibility: visible;
-
-                        button {
-                            transform: scale(1) translateY(-20px);
+                        &:before {
+                            visibility: visible;
+                            opacity: 1;
                         }
-                    }
 
-                    .item__type {
-                        h6 {
-                            display: none;
-                        }
-                    }
+                        .item__select {
+                            opacity: 1;
+                            visibility: visible;
 
-                    .item__price {
-                        @include mobile {
-                            font-size: $regular-size;
-
-                            del {
-                                font-size: .75em;
+                            button {
+                                transform: scale(1) translateY(-20px);
                             }
                         }
 
-                        del {
-                            display: none;
+                        .item__type {
+                            h6 {
+                                display: none;
+                            }
+                        }
+
+                        .item__price {
+                            @include mobile {
+                                font-size: $regular-size;
+
+                                del {
+                                    font-size: .75em;
+                                }
+                            }
+
+                            del {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -1172,6 +1219,10 @@ a {
                     height: 138px;
                     width: 100%;
                     margin-bottom: 30px;
+
+                    @include tablet {
+                        height: 5.625em;
+                    }
 
                     @include mobile {
                         height: 5.25em;
@@ -1218,7 +1269,17 @@ a {
                 .item__select {
                     opacity: 0;
                     visibility: hidden;
-                    margin-top: 35px;
+                    margin-top: 2.1875em;
+
+                    @include tablet() {
+                        opacity: 1;
+                        visibility: visible;
+                        margin-top: 1.6em;
+
+                        &.margin-top {
+                            margin-top: .5em;
+                        }
+                    }
 
                     button {
                         border: none;
@@ -1288,6 +1349,10 @@ a {
                                 opacity: 0.8;
                                 visibility: visible;
                             }
+                        }
+
+                        @include mobile {
+                            display: none;
                         }
                     }
                 }
@@ -1398,8 +1463,6 @@ a {
 }
 
 .about {
-    margin-bottom: 3.75em;
-
     .about__container {
         .about__container-top {
             h2 {
@@ -1565,6 +1628,8 @@ a {
 }
 
 .footer {
+    margin-top: 3.75em;
+
     .footer__top {
         padding-bottom: 3.75em;
 
@@ -1810,8 +1875,13 @@ a {
         border: 1px solid $border-color;
         position: relative;
 
+        @include tablet {
+            padding: 1.5em 0;
+        }
+
         @include mobile {
             flex-direction: column;
+            width: 100%;
         }
 
         .product__container-images {
@@ -2101,11 +2171,6 @@ a {
                 cursor: pointer;
             }
         }
-
-        @include tablet {
-            width: 100%;
-            padding: 0;
-        }
     }
 }
 
@@ -2130,8 +2195,6 @@ a {
 }
 
 .shop {
-    margin-bottom: 3.75em;
-
     .shop__container {
         @include mobile {
             &.container {
@@ -2280,11 +2343,13 @@ a {
 
     .breadcumbs__container {
         padding: 0;
-        .el-breadcrumb__inner.is-link{
-            &:hover{
+
+        .el-breadcrumb__inner.is-link {
+            &:hover {
                 color: $green-color;
             }
-            i{
+
+            i {
                 margin-right: .5em;
             }
         }
@@ -2356,7 +2421,7 @@ a {
         cursor: pointer;
 
         @include tablet {
-            height: 15em;
+            height: 17em;
             padding: .5em 1em 1em;
         }
 
@@ -2380,38 +2445,45 @@ a {
             transition: .2s ease-in-out;
         }
 
-        &:hover {
-            border: 0 transparent;
-            z-index: 20;
+        @media (hover: hover) {
+            &:hover {
 
-            &:before {
-                visibility: visible;
-                opacity: 1;
+                border: 0 transparent;
+                z-index: 20;
 
-                @include tablet {
-                    visibility: hidden;
-                    opacity: 0;
+                &:before {
+                    visibility: visible;
+                    opacity: 1;
+
+                    @include mobile {
+                        height: 100%;
+                        bottom: 0;
+                    }
                 }
-            }
 
-            .item__select {
-                opacity: 1;
-                visibility: visible;
+                .item__select {
+                    opacity: 1;
+                    visibility: visible;
 
-                button {
-                    transform: scale(1) translateY(-20px);
+                    button {
+                        @include tablet {
+                            transform: translateY(20px);
+                        }
+
+                        transform: scale(1) translateY(-20px);
+                    }
                 }
-            }
 
-            .item__type {
-                h6 {
-                    display: none;
+                .item__type {
+                    h6 {
+                        display: none;
+                    }
                 }
-            }
 
-            .item__price {
-                del {
-                    display: none;
+                .item__price {
+                    del {
+                        display: none;
+                    }
                 }
             }
         }
@@ -2486,6 +2558,17 @@ a {
             visibility: hidden;
             margin-top: 35px;
 
+            @include tablet {
+                // display: none;
+                opacity: 1;
+                visibility: visible;
+                margin-top: 1.6em;
+
+                &.margin-top {
+                    margin-top: .5em;
+                }
+            }
+
             button {
                 border: none;
                 border-radius: 40px;
@@ -2513,6 +2596,10 @@ a {
                     &::after {
                         @include angle-down-tooltip;
                     }
+
+                    @include tablet {
+                        transform: translateY(0);
+                    }
                 }
 
                 &:hover {
@@ -2538,6 +2625,10 @@ a {
                         visibility: visible;
                     }
                 }
+
+                @include tablet {
+                    transform: translateY(0);
+                }
             }
 
             .item__select-view {
@@ -2555,10 +2646,23 @@ a {
                         visibility: visible;
                     }
                 }
+
+                @include mobile {
+                    display: none;
+                }
             }
+        }
+
+        .button__mobile {
+            display: none;
 
             @include tablet {
-                display: none;
+                display: block;
+                margin-top: 1.6em;
+
+                &.have-sale {
+                    margin-top: .5em;
+                }
             }
         }
 
@@ -2841,6 +2945,14 @@ a {
                     }
                 }
             }
+
+            .el-button {
+                span {
+                    font-size: $regular-size;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
         }
 
         .cart__container-nothing {
@@ -2940,6 +3052,7 @@ a {
 
             i {
                 color: $light-gray-color;
+                font-size: $xl-size;
             }
         }
     }
@@ -3192,13 +3305,13 @@ a {
     }
 }
 
-.el-alert{
-    display: none;
-    &.is-light{
-        display: flex;
-        align-items: center;
-        &.show{
-            display: block;
+.el-alert {
+    &.is-light {
+        display: none;
+
+        &.show {
+            display: inline-flex;
+            align-items: center;
             position: fixed;
             top: 5%;
             right: 3%;
@@ -3207,10 +3320,12 @@ a {
             z-index: 999999;
         }
     }
-    .el-alert__content{
+
+    .el-alert__content {
         font-weight: 600;
     }
 }
+
 .checkout {
     margin-bottom: 3.75em;
 
@@ -3457,7 +3572,6 @@ a {
 }
 
 .contact {
-    margin-bottom: 6.75em;
 
     .contact__content {
         .contact__content-map {
@@ -3627,8 +3741,6 @@ a {
 }
 
 .about {
-    margin-bottom: 3.75em;
-
     .about__content {
         .about__content-story {
             margin-bottom: 3.75em;
@@ -3638,7 +3750,8 @@ a {
                     align-items: center;
                 }
             }
-            @include mobile{
+
+            @include mobile {
                 .row {
                     flex-direction: column-reverse;
                 }
@@ -3669,9 +3782,11 @@ a {
 
             .story__video {
                 position: relative;
-                @include mobile{
+
+                @include mobile {
                     margin-bottom: 2em;
                 }
+
                 img {
                     height: 18.75em;
                     width: 100%;
@@ -4124,12 +4239,8 @@ a {
     position: fixed;
     bottom: 2em;
     right: 2em;
-    width: 5em;
-    height: 5em;
     text-align: center;
-    line-height: 5em;
     border-radius: 100%;
-    background-color: $dark-color;
     opacity: 0;
     visibility: hidden;
     transition: $animate;
@@ -4149,12 +4260,8 @@ a {
     position: fixed;
     bottom: 2em;
     left: 2em;
-    width: 5em;
-    height: 5em;
     text-align: center;
-    line-height: 5em;
     border-radius: 100%;
-    background-color: #60ae13;
     opacity: 0;
     visibility: hidden;
     transition: $animate;
@@ -4207,25 +4314,30 @@ a {
 .options {
     position: fixed;
     top: 30%;
-    right: 0;
+    left: 0;
     display: none;
+    z-index: 999;
 
     @include mobile {
         &.show {
             display: block;
+        }
+
+        &.hidden {
+            display: none;
         }
     }
 
     .options__toolbar {
         background-color: $white-color;
         box-shadow: -3px 0 10px -2px rgb(0 0 0 / 10%);
-        z-index: 999999;
-        border-radius: .5em 0 0 .5em;
+        border-radius: 0 .5em .5em 0;
         padding-bottom: 1em;
         background-color: $light-color;
 
         .options__toolbar-item {
             padding: .75em;
+            display: block;
 
             &.item-bag {
                 position: relative;
@@ -4233,17 +4345,12 @@ a {
 
             i {
                 color: $light-gray-color;
-                font-size: $sm-size;
-
-                &.fa-shopping-bag {
-                    margin-top: .5em;
-                }
             }
 
             .item__number {
                 position: absolute;
-                top: 55%;
-                right: 10%;
+                top: 58%;
+                right: 20%;
                 width: 1em;
                 height: 1em;
                 border-radius: 1em;

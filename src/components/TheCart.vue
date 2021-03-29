@@ -21,7 +21,7 @@
               <th>total</th>
               <th>
                 <button class="remove__btn" @click.prevent="removeAllCart">
-                  <i class="fas fa-times"></i>
+                  <i class="el-icon-close"></i>
                 </button>
               </th>
             </tr>
@@ -65,7 +65,7 @@
               </td>
               <td class="table__remove">
                 <button class="remove__btn" @click.prevent="removeItem(index)">
-                  <i class="fas fa-times"></i>
+                  <i class="el-icon-close"></i>
                 </button>
               </td>
             </tr>
@@ -114,7 +114,7 @@
       <div class="notify">
         <p>{{ this.contentNotify }}</p>
         <div class="notify__close" @click.prevent="cancelNotify">
-          <i class="fas fa-times"></i>
+          <i class="el-icon-close"></i>
         </div>
         <div class="notify__button">
           <button class="notify__button-cancel" @click.prevent="cancelNotify">

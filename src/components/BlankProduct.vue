@@ -2,7 +2,7 @@
   <div class="blank">
     <div class="blank__product">
       <div class="blank__product-icon">
-        <i class="fas fa-list-alt"></i>
+        <i class="el-icon-postcard"></i>
       </div>
         <p>No product in this category</p>
     </div>

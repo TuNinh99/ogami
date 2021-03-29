@@ -1,7 +1,7 @@
 <template>
   <div class="products">
       <div class="products__content">
-          <the-product/>
+          <!-- <the-product/> -->
       </div>
   </div>
 </template>
